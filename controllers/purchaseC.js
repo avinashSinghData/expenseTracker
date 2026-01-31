@@ -7,9 +7,11 @@ require('dotenv').config()
 const purchasePremium = async(req,res)=>{
     try{
         const rzp= new Razorpay({
-            key_id: process.env.RAZORPAY_KEY_ID, 
-            key_secret: process.env.RAZORPAY_KEY_SECRET,
-            ...(process.env.NODE_ENV === 'development' && {test:true}) 
+            key_id: 'rzp_test_zM9En6oOR0lEzf', 
+            key_secret: 'MiiQlmgHeSTyQ4HYXv6qm4kz',
+            // key_id: process.env.RAZORPAY_KEY_ID, 
+            // key_secret: process.env.RAZORPAY_KEY_SECRET,
+            // ...(process.env.NODE_ENV === 'development' && {test:true}) 
         })
         const amount = 7700
         

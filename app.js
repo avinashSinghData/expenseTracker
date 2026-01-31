@@ -5,6 +5,13 @@ const app = express()
 const fs = require('fs')
 const path = require('path')
 
+app.use(express.static(path.join(__dirname, 'frontend')));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'signup.html'));
+});
+
+
 app.use(cors()) 
 
 // const helmet  =require('helmet')
@@ -47,6 +54,7 @@ myTable.hasMany(forgotPassword);
 forgotPassword.belongsTo(myTable);
 
 sequelize.sync().then(() => {
-    app.listen(4000)
+    const PORT = process.env.PORT || 4000
+    app.listen(PORT, () => console.log(`Server Running on port ${PORT}`))
 })
 .catch((err) => console.log(err))
