@@ -4,6 +4,10 @@ const cors = require('cors')
 const app = express() 
 const fs = require('fs')
 const path = require('path')
+const compression =require('compression')
+const morgan = require('morgan')
+
+require('dotenv').config()
 
 app.use(express.static(path.join(__dirname, 'frontend')));
 
@@ -15,8 +19,6 @@ app.get('/', (req, res) => {
 app.use(cors()) 
 
 // const helmet  =require('helmet')
-const compression =require('compression')
-const morgan = require('morgan')
 
 
 const sequelize = require('./util/database')
